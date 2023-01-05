@@ -1,0 +1,161 @@
+{% extends 'layout.html' %} 
+{% block title %}Products{% endblock %}
+{% block head %} 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+<style>
+    table{
+        font-size: 0.8rem;
+    }
+    iframe{
+        width: 500px;
+        height: 800px;
+    }
+    /* @media only screen and (max-width: 600px) {
+        iframe {
+            width:465px!important;
+        }
+    } */
+    @media only screen and (max-width: 600px) {
+        iframe {
+            width:345px!important;
+        }
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+{% block content %}
+
+{% for i in products %}
+<div class="modal" id="myModal-{{i.id}}">
+    <div class="modal-dialog">
+        <!-- Modal body -->
+        <div class="modal-body">
+            <iframe src="/view-iframe/{{i.id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+        <!-- PAGE CONTENT-->
+        <div class="page-content--bgf7">
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="au-breadcrumb-content">
+                                <div class="au-breadcrumb-left">
+                                    <span class="au-breadcrumb-span">You are here:</span>
+                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                        <li class="list-inline-item active">
+                                            <a href="/">Home</a>
+                                        </li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item">Products</li>
+                                    </ul>
+                                </div>
+                                <!-- <form class="au-form-icon--sm" action="" method="post">
+                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
+                                    <button class="au-btn--submit2" type="submit">
+                                        <i class="zmdi zmdi-search"></i>
+                                    </button>
+                                </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END BREADCRUMB-->
+
+
+            <!-- DATA TABLE-->
+            <section class="p-t-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="title-5 m-b-35">Products</h3>
+                            <div class="table-responsive table-responsive-data2">
+                                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>iD</th>
+                                            <th>Retail Customer Price</th>
+                                            <th>Selling Unit Qty</th>
+                                            <th>Manufacturer</th>
+                                            <th>Material</th>
+                                            <th>Style Number</th>
+                                            <th>Style Name</th>
+                                            <th>Cost</th>
+                                            <th>View</th>
+                                            <th>Open</th>
+                                            <th>Print</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in products %}
+                                        <tr>
+                                            <td>{{i.id}}</td>
+                                            <td>${{i.retail_customer_price}}</td>
+                                            <td>{{i.selling_unit_quantity}}</td>
+                                            <td>{{i.manufacturer}}</td>
+                                            <td>{{i.material_class}}</td>
+                                            <td>{{i.style_number}}</td>
+                                            <td>{{i.style_name}}</td>
+                                            <td>${{i.cost}}</td>
+                                            <!-- <td><a href="/view-product/{{i.id}}"><button class="btn btn-sm btn-dark">View</button></a></td> -->
+                                            <td><button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#myModal-{{i.id}}">
+                                                View
+                                              </button></td>
+                                              <td><a href="/view-product/{{i.id}}" target="_blank"><button class="btn btn-sm btn-success">Open</button></a></td>
+                                            <td><a href="/view-product/{{i.id}}?print=True" target="_blank"><button class="btn btn-sm btn-primary">Print</button></a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <!-- <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot> -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END DATA TABLE-->
+
+            <!-- COPYRIGHT-->
+            <section class="p-t-60 p-b-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2022 All rights reserved.
+                                    Developed by <a href="https://fiverr.com/naqvi29">Naqvi29</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END COPYRIGHT-->
+        </div>
+
+{% endblock %}
+
+{% block scripts %} 
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
+{% endblock %}

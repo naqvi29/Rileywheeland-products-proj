@@ -1,0 +1,95 @@
+{% extends 'layout.html' %} 
+{% block title %}Truncate Products{% endblock %}
+{% block head %} 
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}
+{% block content %}
+
+
+        <!-- PAGE CONTENT-->
+        <div class="page-content--bgf7">
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="au-breadcrumb-content">
+                                <div class="au-breadcrumb-left">
+                                    <span class="au-breadcrumb-span">You are here:</span>
+                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                        <li class="list-inline-item active">
+                                            <a href="/">Home</a>
+                                        </li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item">Truncate all Products</li>
+                                    </ul>
+                                </div>
+                                <!-- <form class="au-form-icon--sm" action="" method="post">
+                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
+                                    <button class="au-btn--submit2" type="submit">
+                                        <i class="zmdi zmdi-search"></i>
+                                    </button>
+                                </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END BREADCRUMB-->
+
+
+            <!-- DATA TABLE-->
+            <section class="p-t-20">
+                <div class="container">
+                    <div class="row col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form action="/truncate-table" method="post">
+                                <div class="form-group">
+                                    <label for="">Password</label>
+                                    <input id="pass" type="text" class="form-control" name="password">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button onclick="return confirm('Are you sure you want to truncate the products table?');" id="update-btn" type="submit" class="btn btn-secondary">Truncate all Products</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- END DATA TABLE-->
+
+            <!-- COPYRIGHT-->
+            <section class="p-t-60 p-b-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2022 All rights reserved.
+                                    Developed by <a href="https://fiverr.com/naqvi29">Naqvi29</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END COPYRIGHT-->
+        </div>
+
+{% endblock %}
+
+{% block scripts %} 
+
+{% if error %}
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{error}}',
+        'error'
+    )
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'layout.html' %} 
+{% block title %}Price Multiplier{% endblock %}
+{% block head %} 
+{% endblock %}
+{% block content %}
+
+
+        <!-- PAGE CONTENT-->
+        <div class="page-content--bgf7">
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="au-breadcrumb-content">
+                                <div class="au-breadcrumb-left">
+                                    <span class="au-breadcrumb-span">You are here:</span>
+                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                        <li class="list-inline-item active">
+                                            <a href="/">Home</a>
+                                        </li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item">Price Multiplier</li>
+                                    </ul>
+                                </div>
+                                <!-- <form class="au-form-icon--sm" action="" method="post">
+                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
+                                    <button class="au-btn--submit2" type="submit">
+                                        <i class="zmdi zmdi-search"></i>
+                                    </button>
+                                </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END BREADCRUMB-->
+
+
+            <!-- DATA TABLE-->
+            <section class="p-t-20">
+                <div class="container">
+                    <div class="row col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form action="/multiplier" method="post">
+                                <!-- <div class="form-group">
+                                    <label for="">Username</label>
+                                    <input id="name" disabled type="text" class="form-control" name="start"  >
+                                </div> -->
+                                <div class="row">
+                                    <div class="col">
+                                        
+                                        <label for="">From Price</label>
+                                      <input type="number" step="any" min="0" name="start" class="form-control" placeholder="from $" required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="">To Price</label>
+                                      <input type="number" step="any" min="0" name="end" class="form-control" placeholder="to $" required>
+                                    </div>
+                                  </div>
+                                  <div class="form-group mt-4">
+                                    <!-- <label for="">Select Multiplier</label> -->
+                                    <select name="multiplier" class="form-control" id="" required>
+                                        <option value="" disabled selected>Select a multiplier</option>
+                                        <option value="add">Add</option>
+                                        <option value="subtract">Subtract</option>
+                                        <option value="multiply">Multiply</option>
+                                        <option value="divide">Divide</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group mt-4">
+                                    <label for="">Value</label>
+                                    <input type="number" step="any" name="value" class="form-control" id="">
+                                  </div>
+                                <div class="form-group text-center mt-4">
+                                    <button id="update-btn" type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to update the products price?');">Update Products</button>
+                                    <p class="mt-2">This will modify the price of all products of your selected price range by your selected multiplier.</p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- END DATA TABLE-->
+
+            <!-- COPYRIGHT-->
+            <section class="p-t-60 p-b-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2022 All rights reserved.
+                                    Developed by <a href="https://fiverr.com/naqvi29">Naqvi29</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END COPYRIGHT-->
+        </div>
+
+{% endblock %}
+
+{% block scripts %} 
+<script>
+    function update(){
+        document.getElementById('name').disabled = false;
+        document.getElementById('pass').disabled = false;
+        document.getElementById("submit-btn").style.display = "inline-block";
+        document.getElementById("cancel-btn").style.display = "inline-block";
+        document.getElementById("update-btn").style.display = "none";
+    }
+    function cancel(){
+        document.getElementById('name').disabled = true;
+        document.getElementById('pass').disabled = true;
+        document.getElementById("submit-btn").style.display = "none";
+        document.getElementById("cancel-btn").style.display = "none";
+        document.getElementById("update-btn").style.display = "inline-block";
+    }
+</script>
+{% endblock %}
